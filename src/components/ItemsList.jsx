@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../store/itemsSlice";
+import Basket from "./Basket";
 
 const ItemsList = () => {
   const items = useSelector((state) => state.items.items);
@@ -16,6 +17,7 @@ const ItemsList = () => {
       <h5>{e.price}</h5>
       <p>{e.description}</p>
       <img src={e.image} alt="image" />
+      <div><Basket /></div>
     </div>
   ));
   return (
