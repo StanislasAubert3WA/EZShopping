@@ -12,8 +12,10 @@ const ItemsList = () => {
 
   const itemsListComponents = items.map((e, key) => (
     <div key={key} style={{ border: "1px black solid" }}>
-      {e.title}
-      {e.price}
+      <h2>{e.title}</h2>
+      <h5>{e.price}</h5>
+      <p>{e.description}</p>
+      <img src={e.image} alt="image" />
     </div>
   ));
   return (
