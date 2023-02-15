@@ -1,17 +1,23 @@
-import { useState } from 'react'
-import construct from './assets/construct.png'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <h2>Welcome to EZ Shopping 🛍 </h2>
-      <p>This website isn't available yet ! Stay tuned !</p>
-      <img className="logo" src={construct} alt="" />
-    </div>
-  )
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/" element={<Nav />}> */}
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            {/*<Route path="user" element={<UserPage />} />*/}
+            {/*<Route path="*" element={<NoPage />} />*/}
+          {/*</Route>*/}
+        </Routes>
+      </BrowserRouter>
+  );
 }
 
 export default App
