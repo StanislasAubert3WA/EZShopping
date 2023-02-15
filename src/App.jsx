@@ -2,7 +2,7 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import User from './pages/UserPage';
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Nav />}> */}
             <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
+            <Route path="user" element={<User />} />
             {/*<Route path="user" element={<UserPage />} />*/}
             {/*<Route path="*" element={<NoPage />} />*/}
           {/*</Route>*/}
