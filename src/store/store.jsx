@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { itemsSlice } from "./itemsSlice";
-import { loginSlice } from "./loginSlice";
+import { userSlice } from "./userSlice";
 
 // Export des actions
 const store = configureStore({
   reducer: {
     items: itemsSlice.reducer,
-    login: loginSlice.reducer,
+    user: userSlice.reducer,
   },
 });
 

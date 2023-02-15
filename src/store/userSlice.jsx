@@ -10,9 +10,9 @@ const initialState = {
     ],
   };
 
-  export const loginSlice = createSlice({
+  export const userSlice = createSlice({
     // clé permettant d'identifier le reducer spécifique
-    name: "login",
+    name: "user",
     initialState,
     // gestions des actions dans le/les reducer(s) du state
     reducers: {
@@ -20,16 +20,18 @@ const initialState = {
         state.loading = "pending";
       },
       authSuccess(state, action) {
-        state.loading = "idle";
-        state.user.username = {username};
-        state.user.password = {password};
+        if(state.user.psw == {pswConfirm}){
+          state.loading = "idle";
+          state.user.username = {username};
+          state.user.psw = {psw};
+        };
       },
     },
   });
 
 // fonction asynchro
 
-export const { authLoading, authSuccess } = loginSlice.actions;
+export const { authLoading, authSuccess } = userSlice.actions;
 
 export const asyncAuth = () => async (dispatch) => {
   dispatch(authLoading());
