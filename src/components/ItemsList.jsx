@@ -5,9 +5,10 @@ const ItemsList = () => {
   const items = useSelector((state) => state.items.items);
   const dispatch = useDispatch();
 
-  const itemsListComponents = items.map((e) => (
-    <div key={e} style={{ border: "1px black solid" }}>
-      {e}
+  const itemsListComponents = items.map((e, key) => (
+    <div key={key} style={{ border: "1px black solid" }}>
+      {e.title}
+      {e.price}
     </div>
   ));
   return (

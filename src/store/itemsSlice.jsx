@@ -19,7 +19,7 @@ export const itemsSlice = createSlice({
     itemsReceived(state, action) {
       console.log("ici 2", action);
       state.loading = "idle";
-      state.items = action.payload.map((e) => e.title);
+      state.items = action.payload;
     },
   },
 });
@@ -27,11 +27,11 @@ export const itemsSlice = createSlice({
 export const { itemsLoading, itemsReceived } = itemsSlice.actions;
 
 const fetchItemsAPI = () =>
-  fetch("https://fakestoreapi.com/docs#p-all").then((response) => response.json());
+  fetch("https://fakestoreapi.com/products").then((response) => response.json());
 
 // call API sous forme de thunk
 export const fetchItems = () => async (dispatch) => {
   dispatch(itemsLoading());
   const response = await fetchItemsAPI();
-  dispatch(itemsReceived(response.data));
+  dispatch(itemsReceived(response));
 };
