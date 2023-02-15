@@ -13,11 +13,9 @@ export const itemsSlice = createSlice({
   // gestions des actions dans le/les reducer(s) du state
   reducers: {
     itemsLoading(state, action) {
-      console.log("ici 1");
       state.loading = "pending";
     },
     itemsReceived(state, action) {
-      console.log("ici 2", action);
       state.loading = "idle";
       state.items = action.payload;
     },
