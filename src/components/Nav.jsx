@@ -1,7 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
 import styled from 'styled-components';
+import {useSelector } from "react-redux";
 
 const Nav = () => {
+  const user = useSelector((state) => state.user.user)
   return (
     <NavBar>
       <h1>EZ Shop</h1>

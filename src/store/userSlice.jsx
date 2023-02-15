@@ -4,8 +4,9 @@ const initialState = {
     loading: "idle",
     user: [
         {
-            username: '',
-            password: '',
+            firstname: '',
+            lastname: '',
+            email: '',
         }
     ],
   };
@@ -19,19 +20,16 @@ const initialState = {
       authLoading(state, action) {
         state.loading = "pending";
       },
-      authSuccess(state, action) {
-        if(state.user.psw == {pswConfirm}){
-          state.loading = "idle";
-          state.user.username = {username};
-          state.user.psw = {psw};
-        };
+      updateUser(state, action) {
+        //state.user.user = action.payload
+        console.log(action.payload);
       },
     },
   });
 
 // fonction asynchro
 
-export const { authLoading, authSuccess } = userSlice.actions;
+export const { authLoading, updateUser } = userSlice.actions;
 
 export const asyncAuth = () => async (dispatch) => {
   dispatch(authLoading());
