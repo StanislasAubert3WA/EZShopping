@@ -15,7 +15,7 @@ const Nav = () => {
             <Link to="/user">{user.firstname}</Link>
           </li>
           <li>
-            <Link to="/user/basket">Basket</Link>
+            <Link to="/user/cart">Cart</Link>
           </li>
         </ul>
       <Outlet />
