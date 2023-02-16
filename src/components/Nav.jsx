@@ -8,12 +8,15 @@ const Nav = () => {
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.theme)
 
+  
+
   const toggle = () => {
     dispatch(toggleTheme())
   }
   return (
-    <NavBar>
-      <h1>EZ Shop</h1>
+    <NavBar className={getTheme}>
+      <nav>
+        <h1>EZ Shop</h1>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -30,6 +33,7 @@ const Nav = () => {
             {theme !== "light" ?  "🌑 Dark Mode" : (  "🌅 Light Mode")}
           </button>
         </div>
+      </nav>
       <Outlet />
     </NavBar>
   )
@@ -38,10 +42,12 @@ const Nav = () => {
 export default Nav;
 
 const NavBar = styled.div`
-display: flex;
-justify-content: space-between;
-padding: 0.5rem 2rem;
-align-items: center;
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  align-items: center;
+}
 background: gold;
 color: black;
   ul{
