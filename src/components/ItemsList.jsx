@@ -25,7 +25,7 @@ const ItemsList = () => {
       <img src={e.image} alt="image" />
       <div>
         <button 
-          onClick={() => {handleClick(item)}}>Add to Cart
+          onClick={() => {handleClick(e)}}>Add to Cart
         </button>
       </div>
     </div>
@@ -49,5 +49,4 @@ const ItemsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
-
 `
