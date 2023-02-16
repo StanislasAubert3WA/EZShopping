@@ -1,21 +1,31 @@
-import React from "react";
+import Cart from '../components/Cart';
+import { useSelector } from 'react-redux';
 
-function Cart(){
-    return (
-        <div className="cart__left">
+function CartPage() {
+
+  const cart = useSelector((state) => state.cart)
+
+  return (
+    <div className="cart">
+      <div className="cart__left">
         <div>
-            <h3>Shopping Cart</h3>
-            {cart?.map((item) => (
-            <CartItem
-                title={item.title}
-                image={item.image}
-                description={item.description}
-                price={item.price} 
-                quantity={item.quantity}
+          <h3>Shopping Cart</h3>
+          {cart?.map((item) => (
+            <Cart
+              key={item.id}
+              id={item.id}
+              image={item.image}
+              title={item.title}
+              price={item.price} 
+              quantity={item.quantity}
             />
-            ))}
+          ))}
         </div>
-        </div>
-    )
+      </div>
+
+    </div>
+  )
 }
+
+export default CartPage;
 

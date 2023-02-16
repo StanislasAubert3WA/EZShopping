@@ -1,26 +1,32 @@
-import { useState, useEffect } from "react";
-import { addToCart, incrementQuantity, decrementQuantity, removeItem, } from "../store/cartSlice";
+//import './cartItem.css'
+import { incrementQuantity, decrementQuantity, removeItem} from '../store/cartSlice';
+import { useDispatch } from 'react-redux';
 
-function Cart() {
-  const [items, setItems] = useState(
-    localStorage.getItem("items") || []
-  );
-
-  // Whenever items change save to localStorage
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
-    console.log(`Saved ${items.length} items to localstorage`);
-    console.log(localStorage.items.items);
-  }, [items]); //dependency is items
-
+function Cart({id, image, title, price, quantity=0}) {
+  const dispatch = useDispatch()
 
   return (
-    <div>
-      <button type="button" onClick={addToCart}>
-        Add To Cart
-      </button>
+    <div className="cartItem">
+      <img className="cartItem__image" src={image} alt='item'/>
+      <div className="cartItem__info">
+        <p className="cartItem__title">{title}</p>
+        <p className="cartItem__price">
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
+        <div className='cartItem__incrDec'>
+          <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
+          <p>{quantity}</p>
+          <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
+        </div>
+        <button
+          className='cartItem__removeButton' 
+          onClick={() => dispatch(removeItem(id))}>
+            Remove
+        </button>
+      </div>
     </div>
-  );
+  )
 }
 
 export default Cart;
