@@ -1,9 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
 import styled from 'styled-components';
-import {useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
+import { getTheme, toggleTheme } from "../store/themeSlice";
 
 const Nav = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user)
+  const theme = useSelector((state) => state.theme)
+
+  const toggle = () => {
+    dispatch(toggleTheme())
+  }
   return (
     <NavBar>
       <h1>EZ Shop</h1>
@@ -18,6 +25,11 @@ const Nav = () => {
             <Link to="/user/cart">Cart</Link>
           </li>
         </ul>
+        <div>
+          <button onClick={toggle} >
+            {theme !== "light" ?  "🌑 Dark Mode" : (  "🌅 Light Mode")}
+          </button>
+        </div>
       <Outlet />
     </NavBar>
   )
