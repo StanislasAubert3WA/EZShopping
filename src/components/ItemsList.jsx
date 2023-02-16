@@ -11,6 +11,10 @@ const ItemsList = () => {
     dispatch(fetchItems())
   }, [])
 
+  const handleClick = item => {
+    dispatch(cartActions.addItem(item));
+  }
+
   const item = items.map((e, key) => (
     <div key={key} style={{ border: "1px black solid" }}>
       <h2>{e.title}</h2>
@@ -19,7 +23,7 @@ const ItemsList = () => {
       <img src={e.image} alt="image" />
       <div>
         <button 
-          onClick={cartActions.addItem}>Add to Cart
+          onClick={() => {handleClick(item)}}>Add to Cart
         </button>
       </div>
     </div>
