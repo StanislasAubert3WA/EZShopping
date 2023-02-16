@@ -12,7 +12,7 @@ const Nav = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/user">User</Link>
+            <Link to="/user">{user.firstname}</Link>
           </li>
           <li>
             <Link to="/user/basket">Basket</Link>

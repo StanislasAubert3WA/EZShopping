@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     loading: "idle",
-    user: [
+    user: 
         {
             firstname: '',
             lastname: '',
             email: '',
         }
-    ],
+    ,
   };
 
   export const userSlice = createSlice({
@@ -21,8 +21,7 @@ const initialState = {
         state.loading = "pending";
       },
       updateUser(state, action) {
-        //state.user.user = action.payload
-        console.log(action.payload);
+        state.user = action.payload;
       },
     },
   });
@@ -31,8 +30,8 @@ const initialState = {
 
 export const { authLoading, updateUser } = userSlice.actions;
 
-export const asyncAuth = () => async (dispatch) => {
-  dispatch(authLoading());
-  await new Promise((resolve) => setTimeout(resolve, 3000)); // on attend 3 sec
-  dispatch(authSuccess());
-};
+// export const asyncAuth = () => async (dispatch) => {
+//   dispatch(authLoading());
+//   await new Promise((resolve) => setTimeout(resolve, 3000)); // on attend 3 sec
+//   dispatch(authSuccess());
+// };
