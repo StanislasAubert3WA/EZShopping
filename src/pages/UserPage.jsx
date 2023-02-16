@@ -5,7 +5,6 @@ import Nav from "../components/Nav";
 function UserPage(){
     return(
         <div>
-            <Nav />
             <UserForm />
         </div>
     )

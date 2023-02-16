@@ -4,7 +4,6 @@ import Nav from "../components/Nav";
 function CartPage() {
     return (
         <div>
-            <Nav />
             <Cart />
         </div>
     );
