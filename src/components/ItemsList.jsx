@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../store/itemsSlice";
 import { cartActions } from "../store/cartSlice";
+import styled from 'styled-components';
+
 
 const ItemsList = () => {
   const items = useSelector((state) => state.items.items);
@@ -11,28 +13,41 @@ const ItemsList = () => {
     dispatch(fetchItems())
   }, [])
 
-  const handleClick = (e) => {
-    dispatch(cartActions.addItem(e));
+  const handleClick = item => {
+    dispatch(cartActions.addItem(item));
   }
 
   const item = items.map((e, key) => (
-    <div key={key} style={{ border: "1px black solid" }}>
+    <div key={key}>
       <h2>{e.title}</h2>
       <h5>{e.price}</h5>
       <p>{e.description}</p>
       <img src={e.image} alt="image" />
       <div>
         <button 
-          onClick={() => {handleClick(e)}}>Add to Cart
+          onClick={() => {handleClick(item)}}>Add to Cart
         </button>
       </div>
     </div>
   ));
   return (
-    <div style={{ marginTop: 200 }}>
-      <div style={{ marginTop: 40 }}>{item}</div>
-    </div>
+      <ItemsContainer >
+        {item}
+        {
+          items.map((i) => {
+            <p>{i.title}</p>
+          })
+        }
+      </ItemsContainer>
+
   );
 };
 
 export default ItemsList;
+
+const ItemsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+
+`
