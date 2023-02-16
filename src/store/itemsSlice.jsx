@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useState } from "react";
 
 // définit un state
 const initialState = {
@@ -18,6 +19,7 @@ export const itemsSlice = createSlice({
     itemsReceived(state, action) {
       state.loading = "idle";
       state.items = action.payload;
+      localStorage.setItem("items", JSON.stringify(action.payload))
     },
   },
 });
@@ -31,6 +33,5 @@ const fetchItemsAPI = () =>
 export const fetchItems = () => async (dispatch) => {
   dispatch(itemsLoading());
   const response = await fetchItemsAPI();
-  localStorage.setItem("items", JSON.stringify(response));
   dispatch(itemsReceived(response));
 };
