@@ -1,5 +1,7 @@
 
-
+const handleClick = item => {
+    dispatch(cartActions.addItem(item));
+}
 
 
 const Item = (item) => {   
@@ -12,7 +14,7 @@ const Item = (item) => {
             <img src={item.image} alt="image" />
             <div>
                 <button 
-                onClick={() => {handleClick(item)}}>Add to Cart
+                    onClick={() => {handleClick(item)}}>Add to Cart
                 </button>
             </div>
         </div>
