@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../store/itemsSlice";
-import { addToCart } from "../store/cartSlice";
+import { cartActions } from "../store/cartSlice";
 
 const ItemsList = () => {
   const items = useSelector((state) => state.items.items);
@@ -19,9 +19,7 @@ const ItemsList = () => {
       <img src={e.image} alt="image" />
       <div>
         <button 
-          onClick={() => 
-            dispatch(addToCart(item))
-          }>Add to Cart
+          onClick={cartActions.addItem}>Add to Cart
         </button>
       </div>
     </div>

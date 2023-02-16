@@ -1,8 +1,7 @@
-//import './cartItem.css'
-import { incrementQuantity, decrementQuantity, removeItem} from '../store/cartSlice';
+import cartActions from '../store/cartSlice';
 import { useDispatch } from 'react-redux';
 
-function Cart({id, image, title, price, quantity=0}) {
+function Cart() {
   const dispatch = useDispatch()
 
   return (
