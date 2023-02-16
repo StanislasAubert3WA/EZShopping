@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+const localUser = JSON.parse(localStorage.getItem("currentUser"))
 
 const initialState = {
     loading: "idle",
-    user: 
+    user: localUser ? localUser : 
         {
             firstname: '',
             lastname: '',
@@ -22,6 +23,7 @@ const initialState = {
       },
       updateUser(state, action) {
         state.user = action.payload;
+        localStorage.setItem("currentUser", JSON.stringify(action.payload))
       },
     },
   });

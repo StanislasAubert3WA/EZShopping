@@ -7,16 +7,19 @@ const UserForm = () => {
     const user = useSelector((state) => state.user.user[0]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [updatedUser, setUpdatedUser] = useState({
-        firstname: "",
-        lastname: "",
-        email: "test@test",
-    });
+    const localUser = JSON.parse(localStorage.getItem("currentUser"))
+    const [updatedUser, setUpdatedUser] = useState(
+        localUser ? localUser : {
+            firstname: "",
+            lastname: "",
+            email: "",
+        }
+    );
 
     const handleSubmit = event => {
       event.preventDefault();
         dispatch(updateUser(updatedUser));
-        console.log(updatedUser);
+        console.log(localUser);
       // 👇️ redirect to /contacts
       navigate('/');
     };
