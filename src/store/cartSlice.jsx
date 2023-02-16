@@ -1,31 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-const items =
-  JSON.parse(localStorage.getItem("cartItems")) !== null
-    ? localStorage.getItem("cartItems")
-    : [];
-
-const totalAmount =
-  localStorage.getItem("totalAmount") !== null
-    ? localStorage.getItem("totalAmount")
-    : 0;
-
-const totalQuantity =
-  localStorage.getItem("totalQuantity") !== null
-    ? localStorage.getItem("totalQuantity")
-    : 0;
-
-const setItemFunc = (item, totalAmount, totalQuantity) => {
-  localStorage.setItem("cartItems", JSON.stringify(item));
-  localStorage.setItem("totalAmount", JSON.stringify(totalAmount));
-  localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
-};
-
 const initialState = {
-  cartItems: items,
-  totalQuantity: totalQuantity,
-  totalAmount: totalAmount,
+  cartItems: [],
+  item:[],
+  totalAmount: 0,
+  totalQuantity: 0,
+  totalPrice: 0
 };
 
 const cartSlice = createSlice({
@@ -39,16 +19,17 @@ const cartSlice = createSlice({
       const existingItem = state.cartItems.find(
         (item) => item.id === newItem.id
       );
+
       state.totalQuantity++;
 
       if (!existingItem) {
-        // ===== note: if you use just redux you should not mute state array instead of clone the state array, but if you use redux toolkit that will not a problem because redux toolkit clone the array behind the scene
 
         state.cartItems.push({
           id: newItem.id,
           title: newItem.title,
-          image01: newItem.image01,
           price: newItem.price,
+          description: newItem.description,
+          image: newItem.image,
           quantity: 1,
           totalPrice: newItem.price,
         });
@@ -60,14 +41,7 @@ const cartSlice = createSlice({
 
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
-
         0
-      );
-
-      setItemFunc(
-        state.cartItems.map((item) => item),
-        state.totalAmount,
-        state.totalQuantity
       );
     },
 

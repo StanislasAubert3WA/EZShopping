@@ -40,7 +40,7 @@ function Cart() {
 };
 
 const Tr = (props) => {
-  const { id, image01, title, price, quantity } = props.item;
+  const { id, title, price, description, image, quantity } = props.item;
   const dispatch = useDispatch();
 
   const deleteItem = () => {
@@ -48,12 +48,13 @@ const Tr = (props) => {
   };
   return (
     <tr>
-      <td>
-        <img src={image} alt="" />
-      </td>
       <td>{title}</td>
       <td>${price}</td>
       <td>{quantity} unité(s)</td>
+      <td>{description}</td>
+      <td>
+        <img src={image} alt="" />
+      </td>
       <td>
         <button onClick={deleteItem}></button>
       </td>
