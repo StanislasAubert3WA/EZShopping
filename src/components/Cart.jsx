@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
+import { addToCart, incrementQuantity, decrementQuantity, removeItem, } from "../store/cartSlice";
 
-function Basket() {
-  let [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("items")) || []
+function Cart() {
+  const [items, setItems] = useState(
+    localStorage.getItem("items") || []
   );
 
   // Whenever items change save to localStorage
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
     console.log(`Saved ${items.length} items to localstorage`);
+    console.log(localStorage.items.items);
   }, [items]); //dependency is items
 
-  // Add a new item
-  const addToCart = () => {
-    setItems([...items, `Product ${Date.now()}`]);
-  };
 
   return (
     <div>
@@ -25,4 +23,4 @@ function Basket() {
   );
 }
 
-export default Basket;
+export default Cart;

@@ -2,7 +2,7 @@ import React from "react";
 import UserForm from "../components/UserForm";
 import Nav from "../components/Nav";
 
-function User(){
+function UserPage(){
     return(
         <div>
             <Nav />
@@ -11,4 +11,4 @@ function User(){
     )
 }
 
-export default User;
+export default UserPage;
