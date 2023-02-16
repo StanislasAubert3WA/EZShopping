@@ -1,31 +1,64 @@
 import cartActions from '../store/cartSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Cart() {
-  const dispatch = useDispatch()
 
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
-    <div className="cartItem">
-      <img className="cartItem__image" src={image} alt='item'/>
-      <div className="cartItem__info">
-        <p className="cartItem__title">{title}</p>
-        <p className="cartItem__price">
-          <small>$</small>
-          <strong>{price}</strong>
-        </p>
-        <div className='cartItem__incrDec'>
-          <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
-          <p>{quantity}</p>
-          <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
-        </div>
-        <button
-          className='cartItem__removeButton' 
-          onClick={() => dispatch(removeItem(id))}>
-            Remove
-        </button>
+      <div>
+          {cartItems.length === 0 ? (
+              <h5>Your cart is empty</h5>
+            ) : (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nom du produit</th>
+                    <th>Prix</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <Tr item={item} key={item.id} />
+                  ))}
+                </tbody>
+              </table>
+            )}
+
+            <div>
+              <h6>
+                Total: $
+                <span>{totalAmount}</span>
+              </h6>
+            </div>
       </div>
-    </div>
-  )
+  );
+};
+
+const Tr = (props) => {
+  const { id, image01, title, price, quantity } = props.item;
+  const dispatch = useDispatch();
+
+  const deleteItem = () => {
+    dispatch(cartActions.deleteItem(id));
+  };
+  return (
+    <tr>
+      <td>
+        <img src={image} alt="" />
+      </td>
+      <td>{title}</td>
+      <td>${price}</td>
+      <td>{quantity} unité(s)</td>
+      <td>
+        <button onClick={deleteItem}></button>
+      </td>
+    </tr>
+  );
 }
 
 export default Cart;
