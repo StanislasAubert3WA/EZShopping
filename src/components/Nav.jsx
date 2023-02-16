@@ -30,7 +30,7 @@ const Nav = () => {
         </ul>
         <div>
           <button onClick={toggle} >
-            {theme !== "light" ?  "🌑 Dark Mode" : (  "🌅 Light Mode")}
+            {theme !== "light" ? "🌅 Light Mode" : "🌑 Dark Mode"}
           </button>
         </div>
       </nav>

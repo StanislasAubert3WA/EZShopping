@@ -29,10 +29,9 @@ const GlobalStyle = createGlobalStyle`
     nav{
         background: #444;
         color: #999;
-        
-        a{
-            color: #999;
-        }
+    }
+    nav a {
+        color: #999;
     }
   }
 `;
