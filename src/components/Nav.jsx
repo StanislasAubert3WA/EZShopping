@@ -12,7 +12,7 @@ const Nav = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/user">{user.firstname}</Link>
+            <Link to="/user">{user.firstname ? user.firstname : "User"}</Link>
           </li>
           <li>
             <Link to="/user/cart">Cart</Link>
