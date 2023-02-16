@@ -31,5 +31,6 @@ const fetchItemsAPI = () =>
 export const fetchItems = () => async (dispatch) => {
   dispatch(itemsLoading());
   const response = await fetchItemsAPI();
+  localStorage.setItem("items", JSON.stringify(response));
   dispatch(itemsReceived(response));
 };
