@@ -40,7 +40,7 @@ const cartSlice = createSlice({
           Number(existingItem.totalPrice) + Number(newItem.price);
       }
 
-      state.total = state.cartItems.reduce(
+      state.totalPrice = state.cartItems.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
         0
       );
