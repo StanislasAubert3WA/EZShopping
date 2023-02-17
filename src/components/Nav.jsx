@@ -60,9 +60,7 @@ nav{
       text-transform: uppercase;
     }
   }
-
   
-
 `
 
 const SwitchThemeButton = styled.button`
@@ -71,5 +69,4 @@ const SwitchThemeButton = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;s
-
 `

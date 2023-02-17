@@ -23,7 +23,6 @@ const initialState = {
       },
       updateUser(state, action) {
         state.user = action.payload;
-        localStorage.setItem("currentUser", JSON.stringify(action.payload))
       },
     },
   });

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../store/itemsSlice";
-import { cartActions } from "../store/cartSlice";
 import styled from 'styled-components';
 import Item from "./Item";
 

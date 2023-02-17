@@ -6,12 +6,8 @@ const initialState = localTheme ? localTheme : "light";
     name: "theme",
     initialState,
     reducers: {
-      getTheme(state, action) {
-        return state
-      },
       toggleTheme(state, action) {
         state == "light" ? state = "dark" : state = "light";
-        localStorage.setItem("theme", state)
         return state
       },
     },

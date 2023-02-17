@@ -1,8 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import cartSlice from "./cartSlice";
 import { itemsSlice } from "./itemsSlice";
 import { themeSlice } from "./themeSlice";
 import { userSlice } from "./userSlice";
+
+const EZMiddleware = store => next => action => {
+  const nextAction = next(action);
+  const state = store.getState();
+  localStorage.setItem('middlewareStore', JSON.stringify(state))
+  return nextAction;
+}
 
 // Export des actions
 const store = configureStore({
@@ -12,6 +20,7 @@ const store = configureStore({
     cart: cartSlice.reducer,
     theme: themeSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(EZMiddleware),
 });
 
 // pour contextualiser le store dans l'arbre React

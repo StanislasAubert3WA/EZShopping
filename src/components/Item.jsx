@@ -37,13 +37,11 @@ const ItemContainer = styled.div`
     img{
         align-self: center;
     }
-
 `
 
 const ItemInfo = styled.div`
     padding: 5%;
     text-align: left;
-
     span{
         font-size: 0.8rem;
         color: white;
@@ -51,11 +49,9 @@ const ItemInfo = styled.div`
         padding: 1%;
         border-radius: 0.5rem;
     }
-
     p{
         font-size: 18px;
     }
-
 `
 
 const ButtonContainer = styled.div`
@@ -65,6 +61,4 @@ const ButtonContainer = styled.div`
         padding: 1% 5%;
         cursor: pointer;
     }
-
-
 `
