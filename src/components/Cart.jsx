@@ -1,40 +1,41 @@
-import cartActions from '../store/cartSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { cartActions } from "../store/cartSlice";
 
-function Cart() {
-
+const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
       <div>
-          {cartItems.length === 0 ? (
-              <h5>Your cart is empty</h5>
-            ) : (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Nom du produit</th>
-                    <th>Prix</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Quantity</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartItems.map((item) => (
-                    <Tr item={item} key={item.id} />
-                  ))}
-                </tbody>
-              </table>
-            )}
+        
+              {cartItems.length === 0 ? (
+                <h5 className="text-center">Your cart is empty</h5>
+              ) : (
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Titre</th>
+                      <th>Prix</th>
+                      <th>Description</th>
+                      <th>Image</th>
+                      <th>Quantity</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems.map((item) => (
+                      <Tr item={item} key={item.id} />
+                    ))}
+                  </tbody>
+                </table>
+              )}
 
-            <div>
-              <h6>
-                Total: $
-                <span>{totalAmount}</span>
-              </h6>
-            </div>
+              <div>
+                <h6>
+                  Subtotal: $
+                  <span>{totalAmount}</span>
+                </h6>
+              </div>
       </div>
   );
 };
@@ -50,16 +51,16 @@ const Tr = (props) => {
     <tr>
       <td>{title}</td>
       <td>${price}</td>
-      <td>{quantity} unité(s)</td>
       <td>{description}</td>
-      <td>
+      <td >
         <img src={image} alt="" />
       </td>
+      <td>{quantity} unité(s)</td>
       <td>
-        <button onClick={deleteItem}></button>
+        <button onClick={deleteItem}>Delete</button> 
       </td>
     </tr>
   );
-}
+};
 
 export default Cart;
