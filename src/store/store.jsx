@@ -6,11 +6,10 @@ import { themeSlice } from "./themeSlice";
 import { userSlice } from "./userSlice";
 
 const EZMiddleware = store => next => action => {
-  const NextAction = next(action);
-  const state = store.getState()
+  const nextAction = next(action);
+  const state = store.getState();
   localStorage.setItem('middlewareStore', JSON.stringify(state))
-
-  return NextAction;
+  return nextAction;
 }
 
 // Export des actions
