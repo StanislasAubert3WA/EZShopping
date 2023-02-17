@@ -4,7 +4,7 @@ import { cartActions } from "../store/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   return (
       <div>
@@ -35,7 +35,7 @@ const Cart = () => {
           <div>
             <h6>
               Total price: $
-              <span>{totalAmount}</span>
+              <span>{totalPrice}</span>
             </h6>
           </div>
       </div>

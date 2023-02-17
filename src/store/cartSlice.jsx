@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const localCart = localStorage.getItem("cartItems");
+
 const initialState = {
-  cartItems: [],
+  cartItems: localCart ? localCart: [],
   item:[],
-  totalAmount: 0,
   totalQuantity: 0,
   totalPrice: 0
 };
@@ -39,7 +40,7 @@ const cartSlice = createSlice({
           Number(existingItem.totalPrice) + Number(newItem.price);
       }
 
-      state.totalAmount = state.cartItems.reduce(
+      state.total = state.cartItems.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
         0
       );
@@ -56,7 +57,7 @@ const cartSlice = createSlice({
         state.totalQuantity = state.totalQuantity - existingItem.quantity;
       }
 
-      state.totalAmount = state.cartItems.reduce(
+      state.totalPrice = state.cartItems.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
         0
       );
