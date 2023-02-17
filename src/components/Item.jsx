@@ -63,6 +63,7 @@ const ButtonContainer = styled.div`
         border: none;
         background: gold;
         padding: 1% 5%;
+        cursor: pointer;
     }
 
 
