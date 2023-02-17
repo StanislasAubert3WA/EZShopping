@@ -35,7 +35,9 @@ const GlobalStyle = createGlobalStyle`
         background: #444;
         color: #999;
         button{
-          color: #999
+          color: #999;
+          background: #444;
+
         }
     }
     nav a {

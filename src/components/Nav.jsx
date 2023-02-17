@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import styled from 'styled-components';
 import {useDispatch, useSelector } from "react-redux";
-import { getTheme, toggleTheme } from "../store/themeSlice";
+import { toggleTheme } from "../store/themeSlice";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Nav = () => {
     dispatch(toggleTheme())
   }
   return (
-    <NavBar className={getTheme}>
+    <NavBar className={theme}>
       <nav>
         <h1>EZ Shop</h1>
         <ul>
@@ -29,7 +29,7 @@ const Nav = () => {
           </li>
         </ul>
         <div>
-          <SwitchThemeButton className={getTheme} onClick={toggle} >
+          <SwitchThemeButton className={theme} onClick={toggle} >
             {theme !== "light" ? "🌞 Light Mode" : "🌑 Dark Mode"}  
           </SwitchThemeButton>
         </div>

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-const localUser = JSON.parse(localStorage.getItem("currentUser"))
+//const localUser = JSON.parse(localStorage.getItem("currentUser"))
+const Storage = JSON.parse(localStorage.getItem("middlewareStore"));
+const localUser = Storage ? Storage.user.user : ""
 
 const initialState = {
     loading: "idle",
@@ -23,7 +25,6 @@ const initialState = {
       },
       updateUser(state, action) {
         state.user = action.payload;
-        localStorage.setItem("currentUser", JSON.stringify(action.payload))
       },
     },
   });

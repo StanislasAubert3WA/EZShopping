@@ -19,7 +19,6 @@ const UserForm = () => {
     const handleSubmit = event => {
       event.preventDefault();
         dispatch(updateUser(updatedUser));
-        console.log(localUser);
       // 👇️ redirect to /contacts
       navigate('/');
     };
