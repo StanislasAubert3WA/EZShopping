@@ -61,6 +61,13 @@ const cartSlice = createSlice({
         0
       );
     },
+
+    //============= Clear Cart ==============
+
+    clearCart(state, action){
+      const cart = initialState;
+      return cart;
+    }
   },
 });
 
