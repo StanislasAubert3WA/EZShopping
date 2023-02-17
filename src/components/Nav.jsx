@@ -48,8 +48,6 @@ nav{
   padding: 0.5rem 2rem;
   align-items: center;
 }
-background: gold;
-color: black;
   ul{
     display: flex;
   }

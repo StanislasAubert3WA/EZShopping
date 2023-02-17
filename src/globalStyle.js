@@ -20,6 +20,11 @@ const GlobalStyle = createGlobalStyle`
         background: #ccc;
         color: black;
     }
+
+    nav{
+      background: gold;
+      color: black;
+    }
   }
 
   .dark{
