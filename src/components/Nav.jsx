@@ -29,9 +29,9 @@ const Nav = () => {
           </li>
         </ul>
         <div>
-          <button onClick={toggle} >
-            {theme !== "light" ? "🌅 Light Mode" : "🌑 Dark Mode"}
-          </button>
+          <SwitchThemeButton className={getTheme} onClick={toggle} >
+            {theme !== "light" ? "🌞 Light Mode" : "🌑 Dark Mode"}  
+          </SwitchThemeButton>
         </div>
       </nav>
       <Outlet />
@@ -55,10 +55,21 @@ nav{
     list-style : none;
     padding: 0.4rem 1rem;
     a{
+      font-weight: bold;
       text-decoration: none;
-      color: black;
       text-transform: uppercase;
     }
   }
+
+  
+
+`
+
+const SwitchThemeButton = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;s
 
 `
